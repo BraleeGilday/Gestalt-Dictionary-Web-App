@@ -5,6 +5,8 @@ import { FaEdit } from "react-icons/fa";
 import { MdDeleteOutline } from "react-icons/md";
 import ConfirmDelete from "./ConfirmDelete";
 
+import downloadPdfIcon from "../assets/download-pdf.png"
+
 
 function Card({script, onDelete, onEdit}) {
     const [flipped, setFlipped] = useState(true);
@@ -56,6 +58,11 @@ function Card({script, onDelete, onEdit}) {
                     <h3>{script.phrase}</h3>
                     <p><strong>Mode:</strong> {script.mode}</p>
                     <p><strong>Intent:</strong> {script.intent}</p>
+
+                    <div>
+                        <img className="icon downloadIcon" src={downloadPdfIcon} alt="Download PDF icon" ></img>
+                    </div>
+
                 </div>  
             )}
 
