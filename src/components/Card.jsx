@@ -16,6 +16,38 @@ function Card({script, onDelete, onEdit}) {
     const handleClose = () => setShowModal(false);
     const handleShow = () => setShowModal(true);
 
+    const downloadScriptPDF = async (script) => {
+        const pdfServiceUrl = "http://127.0.0.1:5005/generate-pdf-from-html"
+
+        const htmlContent = 
+        `<h1>My Script</h1>
+        <h3>Phrase: ${script.phrase}</h3>
+        <p><strong>Mode:</strong> ${script.mode}</p>
+        <p><strong>Communication Intent:</strong> ${script.intent}</p>`;
+   
+        try {
+            const response = await fetch(pdfServiceUrl, {
+                method: "POST",
+                headers: {"Content-Type": "text/html"},
+                body: htmlContent
+            })
+
+            if (!response.ok) throw new Error("Failed to generate PDF");
+            
+            const blob = await response.blob()  // Returns a newly created Blob object which contains a concatenation of all of the data in the array passed into the constructor. (https://developer.mozilla.org/en-US/docs/Web/API/Blob)
+            const link = document.createElement("a");
+            link.href = URL.createObjectURL(blob);
+            link.download = `${script.phrase.replace(/\s+/g, "_")}.pdf`;
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+
+        } catch(error) {
+            console.error("Error generating PDF:", error)
+            alert("Error generating PDF")
+        }
+    }
+
     return (
         <div className="card">
             <img className="arrowIcon" src={arrowIcon} alt="Arrow" onClick={() => setFlipped(!flipped)}></img>
@@ -60,7 +92,12 @@ function Card({script, onDelete, onEdit}) {
                     <p><strong>Intent:</strong> {script.intent}</p>
 
                     <div>
-                        <img className="icon downloadIcon" src={downloadPdfIcon} alt="Download PDF icon" ></img>
+                        <img 
+                            className="icon downloadIcon" 
+                            src={downloadPdfIcon} 
+                            alt="Download PDF icon" 
+                            onClick={() => downloadScriptPDF(script)}>
+                        </img>
                     </div>
 
                 </div>  
