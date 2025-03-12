@@ -9,6 +9,7 @@ import LearnMore from './pages/LearnMore'
 import Help from './pages/Help'
 import AddScript from './pages/AddScript'
 import Login from './pages/Login'
+import EditScript from './pages/EditScript';
 
 function App() {
 
@@ -17,7 +18,9 @@ function App() {
     return savedUser ? { user_id: savedUser } : null;
 });
 
-  const [loading, setLoading] = useState(true)
+  const [loading, setLoading] = useState(true);
+
+  const [scriptToEdit, setScriptToEdit] = useState(null);
 
   useEffect(() => {
     const checkUser = async () => {
@@ -42,10 +45,11 @@ function App() {
         <main>
         <Routes>
           <Route path="/" element={user ? <Navigate to="/dictionary" /> : <Login/>}></Route>
-          <Route path="/dictionary" element={ <GestaltDictionary/> }></Route>
+          <Route path="/dictionary" element={ <GestaltDictionary setScriptToEdit={setScriptToEdit}/> }></Route>
           <Route path="/help" element={<Help/>}></Route>
           <Route path="/learn" element={<LearnMore/>}></Route>
           <Route path="/add" element={<AddScript/>}></Route>
+          <Route path="/edit" element={<EditScript scriptToEdit={scriptToEdit}/>}></Route>
         </Routes>
         </main>
 

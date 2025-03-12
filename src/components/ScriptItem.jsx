@@ -1,9 +1,9 @@
 import Card from "./Card";
 
-function ScriptItem({script}) {
+function ScriptItem({script, onDelete, onEdit}) {
     return (
         <>
-            <Card script={script}/>
+            <Card script={script} onDelete={onDelete} onEdit={onEdit}/>
         </>
     )
 }

@@ -55,9 +55,9 @@ function EditScript({scriptToEdit}) {
 
 
     const editScript = async () => {
-        const editedScript = { phrase, mode, intent, audio_url }
+        const editedScript = { phrase, mode, intent, audio_url: audioFile || scriptToEdit.audio_url }
         const response = await fetch(
-            `${SCRIPT_API}/scripts/${scriptToEdit._id}`, {
+            `http://127.0.0.1:3000/api/scripts/${scriptToEdit._id}`, {
                 method: 'PUT',
                 headers: {'Content-Type': 'application/json'},
                 body: JSON.stringify(editedScript)   // converts the object to a string representation that is recognizable as JSON, which is how to send data.

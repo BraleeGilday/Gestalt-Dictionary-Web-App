@@ -1,9 +1,15 @@
 import ScriptItem from "./ScriptItem";
 
-function ScriptCollection({scripts}) {
+function ScriptCollection({scripts, onDelete, onEdit}) {
     return (
         <>
-            {scripts.map((script, index) => <ScriptItem script={script} key={index}/>)}
+            {scripts.map((script, index) => 
+            <ScriptItem 
+                script={script} 
+                key={index}
+                onDelete={onDelete}
+                onEdit={onEdit}
+            />)}
         </>
     )
 }

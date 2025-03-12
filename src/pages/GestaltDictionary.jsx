@@ -7,8 +7,9 @@ import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 
-function GestaltDictionary() {
+function GestaltDictionary({setScriptToEdit}) {
     const [scripts, setScripts] = useState([]);
+    const navigate = useNavigate();
 
     const loadScripts = async () => {
         const token = localStorage.getItem("token")
@@ -38,7 +39,7 @@ function GestaltDictionary() {
 
     const onDelete = async (_id) => {
         const response = await fetch(
-            `/scripts/${_id}`,
+            `http://127.0.0.1:3000/api/scripts/${_id}`,     // Add to .env
             {method: 'DELETE'}
         );
         if(response.status === 204) {
@@ -46,6 +47,11 @@ function GestaltDictionary() {
         } else {
             alert(`Failed to delete script. Status code = ${response.status}`)
         }
+    }
+
+    const onEdit = (script) => {
+        setScriptToEdit(script);
+        navigate('/edit');
     }
 
     return (
@@ -59,7 +65,7 @@ function GestaltDictionary() {
             <HelpIcon />
             <AddButton />
 
-            <ScriptCollection scripts={scripts} onDelete={onDelete}></ScriptCollection>
+            <ScriptCollection scripts={scripts} onDelete={onDelete} onEdit={onEdit}></ScriptCollection>
         </div>
     )
 }

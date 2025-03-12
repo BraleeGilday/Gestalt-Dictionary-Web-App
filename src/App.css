@@ -103,7 +103,7 @@ ul {
   border-radius: 15px;
   text-align: center;
   width: 400px;
-  height: 200px;
+  height: 250px;
   margin: 10px;
   margin-right: 30px;
   margin-left: 30px;
@@ -126,6 +126,27 @@ ul {
 .arrowIcon:hover {
   border-color: #d73cbe;
 }
+
+.edit-delete-icons {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+}
+
+.icon {
+  cursor: pointer;
+  z-index: 10; /* Make sure it's on top */
+  pointer-events: auto; /* Ensure clicks are allowed */
+  margin: 5px;
+  margin-bottom: 0px;
+  color: grey;
+  
+}
+
+.icon:hover {
+  color: black;
+}
+
 
 .card-front,
 .card-back {
@@ -156,11 +177,10 @@ ul {
   margin: 5px;
 }
 
-
-.read-the-docs {
-  color: #888;
+audio {
+  margin-top: 20px;
+  margin-bottom: 20px;
 }
-
 
 /* Help Page */
 .helpPage {
@@ -508,3 +528,28 @@ select {
   color: red;
 }
 
+
+.modal {
+  display: block;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1050;
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.3);
+  padding: 20px;
+  width: 500px; // Adjust width 
+  max-width: 90%; // Responsive 
+}
+
+.modal-header, .modal-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.modal-backdrop {
+  background-color: rgba(0, 0, 0, 0.5);
+}

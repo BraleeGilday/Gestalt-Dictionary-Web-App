@@ -1,9 +1,18 @@
 import { useState } from "react";
+
 import arrowIcon from '../assets/arrow.png'
+import { FaEdit } from "react-icons/fa";
+import { MdDeleteOutline } from "react-icons/md";
+import ConfirmDelete from "./ConfirmDelete";
 
 
-function Card({script}) {
+function Card({script, onDelete, onEdit}) {
     const [flipped, setFlipped] = useState(true);
+
+    const [showModal, setShowModal] = useState(false);
+
+    const handleClose = () => setShowModal(false);
+    const handleShow = () => setShowModal(true);
 
     return (
         <div className="card">
@@ -19,6 +28,28 @@ function Card({script}) {
                             Your browser does not support the audio tag.
                         </audio>
                     )}
+
+                    <div className="edit-delete-icons"> 
+                        <FaEdit 
+                            className="icon"
+                            size = {20}
+                            onClick={() => onEdit(script)}
+                        />
+
+                        <MdDeleteOutline 
+                            className="icon"
+                            size = {22}
+                            onClick={handleShow}    // Open modal
+                        />
+
+                        <ConfirmDelete 
+                            handleClose = {handleClose}
+                            onDelete = {onDelete}
+                            showModal = {showModal}
+                            script = {script}
+                        />
+                    </div> 
+
                 </div>         
             ) : (
                 <div className="card-back">
@@ -28,7 +59,6 @@ function Card({script}) {
                 </div>  
             )}
 
-            {/* <a href="/" onClick={e => e.PreventDefault}>Delete</a> */}
         </div>
     )
 }
