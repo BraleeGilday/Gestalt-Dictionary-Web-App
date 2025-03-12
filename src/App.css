@@ -1,0 +1,510 @@
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  padding-bottom: .5rem;
+  padding-top: 1.5rem;
+  text-align: center;
+}
+
+.gestaltTitle {
+  font-family: 'OpenDyslexic';
+  letter-spacing: -3px;
+  margin-bottom: 0;
+}
+
+.gestaltSubtitle {
+  font-family: 'OpenDyslexic';
+  margin-bottom: 30px;
+}
+
+.navBar {       /* Added */
+  display: flex;
+  justify-content: flex-end;   /* Moves content to the right */
+  width: 100%;
+  max-width: 1280px;
+}
+
+
+.link {          /* Added */
+  padding: 15px;
+  font-size: 1.5em;
+}
+
+.learnMore h1, .learnMore h2, .learnMore p {
+  font-family: 'OpenDyslexic';
+}
+
+.learnMore h2, .learnMore p {
+  text-align: left;
+}
+
+
+.tooltipText {
+  font-family: "League Spartan", system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  padding: 2px 6px !important;
+}
+
+.learnMore h3 {
+  font-family: 'OpenDyslexic';
+  text-align: left;
+}
+
+ol {
+  font-family: 'OpenDyslexic';
+  text-align: left;
+}
+
+ul {
+  list-style-type: none;
+  font-family: 'OpenDyslexic';
+}
+
+.button {
+  height: 25px;
+  border-radius: 25px;
+  text-align: center;
+  display: block;
+  margin: 0 auto;
+  margin-bottom: 30px;
+  font-size: large;
+  border: 1px solid transparent;
+  padding: 0.6em 1.2em;
+  font-weight: 700;
+  cursor: pointer;
+  transition: border-color 0.25s;
+  text-decoration: none;
+  width: 150px;
+  font-family: "League Spartan", system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+.addButton {
+  background-color: #00ccff;
+}
+
+.addButton:hover {
+  border-color: #d73cbe;
+}
+
+.dictionaryButton {
+  background-color: #d73cbe;
+  margin-top: 20px;;
+}
+
+.dictionaryButton:hover {
+  border-color: #00ccff;
+  color: #00ccff;
+}
+
+.card {
+  position: relative;
+  border: 1px solid white;
+  background-color: white;
+  border-radius: 15px;
+  text-align: center;
+  width: 400px;
+  height: 200px;
+  margin: 10px;
+  margin-right: 30px;
+  margin-left: 30px;
+  display: inline-block;
+}
+
+.arrowIcon {
+  width: 40px;
+  height: auto; 
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  cursor: pointer;
+  transition: border-color 0.25s;
+  border: 2px solid transparent; /* Initially transparent */
+  border-radius: 50%;
+  z-index: 10; /* Higher than card layers */
+}
+
+.arrowIcon:hover {
+  border-color: #d73cbe;
+}
+
+.card-front,
+.card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    font-family: "League Spartan", system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+.card-front h2, .card-back h3 {
+  font-family: "League Spartan", system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Open Sans', 'Helvetica Neue', sans-serif;
+  width: 280px; /* Limit width of text */
+  margin: 0 auto; /* Center the text */
+  text-align: center; /* Center the text inside the element */
+  word-wrap: break-word; /* Break long words */
+}
+
+.card-back h3 {
+  margin-bottom: 10px;
+  line-height: 90%;
+}
+
+.card-back p {
+  margin: 5px;
+}
+
+
+.read-the-docs {
+  color: #888;
+}
+
+
+/* Help Page */
+.helpPage {
+  font-family: 'OpenDyslexic';
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Centers content without affecting other sections */
+}
+
+.helpPage h2 {
+  font-size: 1.2rem;
+  margin-bottom: 40px;
+  margin-top: 0px;;
+}
+
+.helpSection {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  margin-bottom: 15px;
+  max-width: 900px;
+  width: 100%; /* Makes sure it doesn’t shrink weirdly */
+}
+
+.textRight {
+  flex: 1; /* Makes the text take the remaining space */
+  text-align: left;
+}
+
+.helpImage {
+  width: 310px;
+  margin-right: 20px;
+}
+
+
+/* Add New Script Page */
+
+.add-container {
+  background-color: white;
+  border-radius: 15px;
+  max-width: 900px;
+  margin: auto;
+  margin-top: 50px;
+  min-height: 400px;
+}
+
+.add-container h1 {
+  background-color: #d73cbe;
+  color: black;
+  padding: 10px;
+  border-radius: 10px 10px 0 0;
+  font-family: 'OpenDyslexic';
+  padding: 20px;
+  text-align: left;
+  font-size: 1.5em;
+  letter-spacing: -3px;
+}
+
+.add-container p {
+  font-family: 'OpenDyslexic';
+  text-align: left;
+  font-size: .9em;
+  margin-left: 20px;
+}
+
+fieldset {
+  border: none;
+  margin: 0;
+  padding: 0;
+}
+
+.required:before {
+  content:"*";
+  color: red;
+  font-family: "League Spartan", system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Open Sans', 'Helvetica Neue', sans-serif;
+  font-size: large;
+  font-weight: bold;
+}
+
+/* Making spacing the same as the labels with asterisks */
+.notRequired:before {
+  content: "\00a0 \00a0";
+  font-size: small;
+}
+
+form {
+  margin-top: 10px;
+  text-align: left;
+  margin-left: 17px;
+  margin-right: 17px;
+
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+
+}
+
+legend {
+  font-weight: bold;
+  font-size: large;
+}
+
+.addPageButton{
+  font-family: 'OpenDyslexic';
+  background-color: #d73cbe;
+  color: white;
+  border: 1px solid transparent;
+  border-radius: 25px;
+  width: 150px;
+}
+
+.addPageButton:hover {
+  border-color: black;
+  color: #00ccff;
+}
+
+
+.addPageButtons {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+
+.modeRadioButtons {
+  margin-left: 20px;
+}
+
+.scriptTextInput {
+  width: 90%;
+  padding: 8px;
+  border: 1px solid #000;
+  font-family: "League Spartan", system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Open Sans', 'Helvetica Neue', sans-serif;
+  font-size: large;
+  margin-left: 10px;
+}
+
+select {
+  margin-left: 10px;
+  font-family: "League Spartan", system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Open Sans', 'Helvetica Neue', sans-serif;
+  font-size: large;
+  padding: 10px;
+  min-width: 200px;
+}
+
+
+.popupIcon {
+  width:40px;
+  height: auto;
+}
+
+.legend-container {
+  display: flex;
+  align-items: center;
+  gap: 8px; /* Adjust spacing between legend and icon */
+}
+
+
+/* Intent PopUp */
+
+.intent-popup-container {
+  position: fixed;
+  top:50%;
+  left:50%;
+  transform: translate(-50%, -50%);
+  background-color: #00ccff;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+  width: 60%;
+  max-width: 500px;
+  z-index: 1000; /* Ensure it's on top of other content */
+}
+
+.close-popup-button {
+  position: absolute;
+  top:10px;
+  right: 10px;
+  cursor: pointer;
+  color: red;
+  z-index: 1010;
+}
+
+.close-popup-button:hover {
+  color: darkred;
+}
+
+.intent-popup-container h2 {
+  font-family: 'OpenDyslexic';
+  font-size: medium;
+}
+
+.popupHeader {
+  display: flex;
+  align-items: center;
+  background-color: #c1ff72;
+  gap: 50px;
+  justify-content: center;
+}
+
+.intent-popup-container p {
+  font-family: "League Spartan", system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+.popup-content {
+  margin: 10px;
+}
+
+
+/* Confirmation Buttons */
+.confirmationWindow {
+  position: fixed;
+  top:60%;
+  left:50%;
+  padding: 20px;
+  padding-right: 30px;
+  padding-left: 30px;
+  border: 2px solid black;
+  transform: translate(-50%, -50%);
+  background-color: white;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+  max-width: 500px;
+  z-index: 1000; /* Ensure it's on top of other content */
+}
+
+
+.confirmationWindow p {
+  font-family: "League Spartan", system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Open Sans', 'Helvetica Neue', sans-serif;
+  text-align: center;
+  font-weight: bold;
+  font-size: 1.5em;
+  margin: 20px;
+}
+
+.confirmationButtons button {
+  font-family: 'OpenDyslexic';
+  background-color: #d73cbe;
+  color: white;
+  font-size: .9em;
+  letter-spacing: -1px;
+  border: 1px solid transparent;
+  border-radius: 25px;
+  width: 150px;
+  margin: 10px;
+}
+
+.confirmationButtons button:hover {
+  border-color: black;
+  color: #00ccff;
+}
+
+.confirmationButtons {
+  display: flex;
+  margin: auto;
+  justify-content: center;
+  gap: 20px;
+  margin-left: 30px;
+  margin-right: 30px;
+}
+
+
+
+
+/* Login Page Styling */
+.container{
+  background: #7583f6;
+  padding: 2em;
+  display: flex;
+  flex-direction: column;
+  border-radius: 30px;
+  box-shadow: 0 0 5px #aab4fb;
+  max-width: 400px;
+  width: 100%;
+  margin: 50px auto;
+}
+
+.container h1 {
+  font-size: 2em;
+  margin-bottom: 1.5rem;
+  font-family: 'OpenDyslexic';
+}
+
+.container h2 {
+  margin-bottom: 0;
+}
+
+
+.container .input-field {
+  background-color: white;
+  color: #4d4d4d;
+  font-family: League Spartan, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Open Sans', 'Helvetica Neue', sans-serif;
+  font-size: 1.2em;
+  width: 100%;
+  padding: 1em;
+  margin: 10px 0;
+  outline: none;
+  border: none;
+  border-radius: 20px;
+  box-shadow: 0 0 5px transparent;
+  
+  box-sizing: border-box;
+}
+
+
+.container button {
+  font-family: 'OpenDyslexic';
+  background-color: #d73cbe;
+  color: white;
+  font-size: 1em;
+  letter-spacing: -1px;
+  border: 2px solid transparent;
+  border-radius: 25px;
+  width: 150px;
+  margin: 10px;
+}
+
+.container .loginButtons {
+  display: flex;
+  margin: auto;
+  justify-content: center;
+  gap: 20px;
+  margin-left: 30px;
+  margin-right: 30px;
+}
+
+.container button:hover {
+  border-color: black;
+  color: #00ccff;
+}
+
+
+/* Logout "Button" */
+.logout-button {
+  background-color: transparent;
+  border: none;
+  color: white;
+  font-size: 14px;
+  cursor: pointer;
+  margin-left: 15px;
+  padding: 5px;
+  text-decoration: underline;
+}
+
+.logout-button:hover {
+  color: red;
+}
+
