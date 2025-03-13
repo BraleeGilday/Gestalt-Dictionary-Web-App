@@ -54,7 +54,15 @@ function AddScript() {
     }
 
     const handleAddScript = async () => {    
-        console.log("Submitting Script with Audio:", { phrase, mode, intent, audio_url: audioFile });
+        const token = localStorage.getItem("token");
+        const user_id = localStorage.getItem("user_id");
+
+        if (!token || !user_id) {
+            alert("User not authenticated");
+            return;
+        }
+
+        console.log("Submitting Script with:", { phrase, mode, intent, audio_url: audioFile });
 
         try {
             await addScript(phrase, mode, intent, audioFile)

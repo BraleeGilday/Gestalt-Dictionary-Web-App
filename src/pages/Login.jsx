@@ -25,11 +25,12 @@ const Login = () => {
         e.preventDefault()
         const result = await registerUser(username, password)
 
-        if (result.message) {
-            alert("Registration Successful!")
-            navigate("/dictionary")
+        if (result.access_token) {
+            localStorage.setItem("token", result.access_token);
+            localStorage.setItem("user_id", result.user_id);
+            navigate("/dictionary"); 
         } else {
-            alert("Sorry! We failed to log you in. Error: " + result.error)
+            alert("Sorry! Registration failed. Error: " + result.error);
         }
     }
 

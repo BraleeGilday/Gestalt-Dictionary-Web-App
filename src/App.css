@@ -96,6 +96,13 @@ ul {
   color: #00ccff;
 }
 
+.subtitle {
+  display: flex;         /* Enables flexbox */
+  align-items: center;   /* Aligns items vertically */
+  gap: 10px;             /* Adds space between elements */
+  justify-content: center;
+}
+
 .card {
   position: relative;
   border: 1px solid white;
@@ -542,6 +549,12 @@ select {
 
 .logout-button:hover {
   color: red;
+}
+
+/* Remove focus outline on click */
+.logout-button:focus {
+  outline: none;
+  box-shadow: none;
 }
 
 
