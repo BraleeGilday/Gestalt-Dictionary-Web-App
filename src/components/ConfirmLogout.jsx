@@ -1,41 +1,30 @@
 import { Modal, Button } from "react-bootstrap";
-//import "bootstrap/dist/css/bootstrap.min.css";
 
-// https://react-bootstrap.netlify.app/docs/components/modal/
-
-function ConfirmLogout( {handleClose, showModal, onDelete, script} ) {
-
+function ConfirmLogout({ handleClose, showModal, onLogout }) {
     return (
-      <>
-        <Modal
-          show={showModal}
-          onHide={handleClose}
-          backdrop="static"
-          keyboard={false}
-        >
-          <Modal.Header>
-            <Modal.Title>Confirm Deletion</Modal.Title>
-          </Modal.Header>
-          <Modal.Body>
-            Are you sure you want to delete this script?
-          </Modal.Body>
-          <Modal.Footer>
-            <Button variant="secondary" onClick={handleClose}>
-              Cancel
-            </Button>
-            <Button 
-                variant="primary"   
-                onClick={() => {
-                    onDelete(script._id);
-                    handleClose();
-                }}
-            >
-                Delete Script
-            </Button>
-          </Modal.Footer>
+        <Modal className="logout-modal" show={showModal} onHide={handleClose} backdrop="static" keyboard={false}>
+            <Modal.Header>
+                <Modal.Title>Confirm Logout</Modal.Title>
+            </Modal.Header>
+            <Modal.Body>
+                Are you sure you want to log out?
+            </Modal.Body>
+            <Modal.Footer>
+                <Button variant="secondary" onClick={handleClose}>
+                    Cancel
+                </Button>
+                <Button 
+                    variant="primary"
+                    onClick={() => {
+                        onLogout();
+                        handleClose();
+                    }}
+                >
+                    Logout
+                </Button>
+            </Modal.Footer>
         </Modal>
-      </>
     );
 }
 
-export default ConfirmDelete
+export default ConfirmLogout;

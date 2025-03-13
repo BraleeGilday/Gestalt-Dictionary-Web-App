@@ -113,7 +113,7 @@ function GestaltDictionary({setScriptToEdit}) {
             <ScriptCollection scripts={scripts} onDelete={onDelete} onEdit={onEdit}></ScriptCollection>
 
             <div>
-                <button onClick={() => downloadAllScriptsPDF(scripts)}>
+                <button className="export-all-button" onClick={() => downloadAllScriptsPDF(scripts)}>
                     Export All Scripts to PDF
                 </button>
             </div>
