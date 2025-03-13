@@ -1,6 +1,8 @@
 import { useState } from 'react';
-import { registerUser, loginUser } from '../../APIs/auth';
 import { useNavigate } from 'react-router-dom';
+
+//
+import { registerUser, loginUser } from '../../API_Services/auth';
 
 const Login = () => {
     const [username, setUsername] = useState("")
@@ -12,9 +14,8 @@ const Login = () => {
         const result = await loginUser(username, password)
 
         if (result.access_token) {
-            // Ensure localStorage is updated before navigating
-            localStorage.setItem("token", result.access_token);         // ?
-            localStorage.setItem("user_id", result.user_id);            // ?
+            localStorage.setItem("token", result.access_token);
+            localStorage.setItem("user_id", result.user_id);
             navigate("/dictionary")
         } else {
             alert("Sorry! We failed to log you in. Error: " + result.error)
@@ -39,18 +40,18 @@ return (
 <div className="container">
     <h1>Welcome to Gestalt Dictionary!</h1>
     <h2>Login or Register</h2>
-    <form id="auth-form" action="{{url_for('login')}}" method="post">
+    <form id="auth-form" >
         <input 
             type="text" 
-            // name="username" 
             placeholder="Username" 
+            value={username} 
             className="input-field"
             onChange={(e) => setUsername(e.target.value)} 
         />
         <input 
             type="password" 
-            // name="password" 
             placeholder="Password"
+            value={password} 
             className="input-field"
             onChange={(e) => setPassword(e.target.value)} 
         />

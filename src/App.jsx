@@ -1,7 +1,7 @@
 
 import './App.css'
 import { useEffect, useState } from "react";
-import { verifyUser } from '../APIs/auth'
+import { verifyUser } from '../API_Services/auth';
 import {BrowserRouter as Router, Routes, Route, Navigate} from 'react-router-dom'
 
 import GestaltDictionary from './pages/GestaltDictionary'

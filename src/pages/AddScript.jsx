@@ -1,10 +1,11 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { addScript } from '../../APIs/scripts';
-import { startRecording, stopRecording } from '../../APIs/audio';
-
 import PopupIcon from '../components/PopupIcon';
 import AreYouSure from '../components/AreYouSure';
+
+// 
+import { startRecording, stopRecording } from '../../API_Services/audio';
+import { addScript } from '../../API_Services/scripts';
 
 function AddScript() {
     const [phrase, setPhrase] = useState('');
@@ -96,14 +97,13 @@ function AddScript() {
                 <fieldset>
                 <legend>Record Audio</legend>
                 {recording ? (
-                    <button onClick={handleStopRecording}>Stop Recording</button>
+                    <button className="record-button" onClick={handleStopRecording}>⏹️ Stop Recording</button>
                 ) : (
-                    <button onClick={handleStartRecording}>Start Recording</button>
+                    <button className="record-button"  onClick={handleStartRecording}> Start Recording</button>
                 )}
                 
                 {audioFile && (
                     <div>
-                        <p>Recording saved!</p>
                         <audio controls>
                             <source src={audioFile} type="audio/wav" />
                             Your browser does not support the audio tag.

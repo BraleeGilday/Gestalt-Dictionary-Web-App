@@ -1,7 +1,9 @@
 import { Link, useNavigate } from 'react-router-dom';
 import { useState } from "react";
-import { logoutUser } from '../../APIs/auth';
 import ConfirmLogout from '../components/ConfirmLogout';
+
+//
+import { logoutUser } from '../../API_Services/auth';
 
 function Navigation() {
     const navigate = useNavigate();
@@ -13,6 +15,7 @@ function Navigation() {
             navigate("/");
         } else {
             console.error("Logout failed:", result.error);
+            navigate("/");
         }
     };
 

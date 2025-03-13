@@ -1,8 +1,8 @@
-const AUDIO_API_URL = "http://127.0.0.1:5002/api"; // Flask backend URL
+const AUDIO_URL = "http://127.0.0.1:5002/api"; // Flask backend URL
 
 export const startRecording = async () => {
     const response = await fetch(
-        `${AUDIO_API_URL}/start-recording`,
+        `${AUDIO_URL}/start-recording`,
         {method: 'POST'}
     )
 
@@ -12,7 +12,7 @@ export const startRecording = async () => {
 
 export const stopRecording = async() => {
     const response = await fetch(
-        `${AUDIO_API_URL}/stop-recording`,
+        `${AUDIO_URL}/stop-recording`,
         {method: 'POST'}
     )
 
@@ -21,5 +21,5 @@ export const stopRecording = async() => {
 }
 
 export const getAudioFile = (fileName) => { 
-    return `${AUDIO_API_URL}/get-audio/${fileName}`
+    return `${AUDIO_URL}/get-audio/${fileName}`
 }

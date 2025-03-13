@@ -1,18 +1,18 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-
-import { startRecording, stopRecording } from '../../APIs/audio';
-
-// import RecordButton from '../components/RecordButton';
-
 import PopupIcon from '../components/PopupIcon';
 import AreYouSure from '../components/AreYouSure';
+
+// 
+import { startRecording, stopRecording } from '../../API_Services/audio';
+import { editScript } from '../../API_Services/scripts';
 
 function EditScript({scriptToEdit}) {
     const [phrase, setPhrase] = useState(scriptToEdit.phrase);
     const [mode, setMode] = useState(scriptToEdit.mode);
     const [intent, setIntent] = useState(scriptToEdit.intent);
     const [audioFile, setAudioFile] = useState(scriptToEdit.audioFile);
+    const [notes, setNotes] = useState(scriptToEdit.notes)
 
     const [recording, setRecording] = useState(false);
     const [showConfirmation, setShowConfirmation] = useState(false);
@@ -52,25 +52,6 @@ function EditScript({scriptToEdit}) {
             alert("Error: " + response.error)
         }
     }
-
-
-    const editScript = async () => {
-        const editedScript = { phrase, mode, intent, audio_url: audioFile || scriptToEdit.audio_url }
-        const response = await fetch(
-            `http://127.0.0.1:3000/api/scripts/${scriptToEdit._id}`, {
-                method: 'PUT',
-                headers: {'Content-Type': 'application/json'},
-                body: JSON.stringify(editedScript)   // converts the object to a string representation that is recognizable as JSON, which is how to send data.
-            }
-        );
-        if (response.status !== 200) {
-            alert("Sorry! We were unable to edit your script. Try again.")
-        } else {
-            console.log("Your script was successfully updated!")
-            navigate('/dictionary');
-        }
-    };
-
 
     return (
         <div className="add-container">
@@ -184,6 +165,17 @@ function EditScript({scriptToEdit}) {
                             <option value="New Situation">New Situation</option>
                         </select>
                     </div>
+                </fieldset>
+
+                <fieldset>
+                    <legend>Notes</legend>
+                    <textarea 
+                        name="notes"
+                        value={notes} 
+                        onChange={e => setNotes(e.target.value)} 
+                        className='scriptTextInput'
+                        placeholder='Type the notes here'
+                    />
                 </fieldset>
 
                 <div className="addPageButtons">

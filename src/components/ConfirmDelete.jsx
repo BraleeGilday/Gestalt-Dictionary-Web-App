@@ -1,7 +1,6 @@
 import { Modal, Button } from "react-bootstrap";
-//import "bootstrap/dist/css/bootstrap.min.css";
 
-// https://react-bootstrap.netlify.app/docs/components/modal/
+// CITATION: https://react-bootstrap.netlify.app/docs/components/modal/
 
 function ConfirmDelete( {handleClose, showModal, onDelete, script} ) {
 

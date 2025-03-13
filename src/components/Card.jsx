@@ -1,12 +1,12 @@
 import { useState } from "react";
-
-import arrowIcon from '../assets/arrow.png'
+import ConfirmDelete from "./ConfirmDelete";
 import { FaEdit } from "react-icons/fa";
 import { MdDeleteOutline } from "react-icons/md";
-import ConfirmDelete from "./ConfirmDelete";
-
+import arrowIcon from '../assets/arrow.png'
 import downloadPdfIcon from "../assets/download-pdf.png"
 
+// Service for communicating with the pdf-converter-microservice
+import { downloadScriptPDF } from "../../API_Services/pdf";
 
 function Card({script, onDelete, onEdit}) {
     const [flipped, setFlipped] = useState(true);
@@ -15,39 +15,6 @@ function Card({script, onDelete, onEdit}) {
 
     const handleClose = () => setShowModal(false);
     const handleShow = () => setShowModal(true);
-
-    const downloadScriptPDF = async (script) => {
-        const pdfServiceUrl = "http://127.0.0.1:5005/generate-pdf-from-html"
-
-        const htmlContent = 
-        `<h1>My Script</h1>
-        <h3>Phrase: ${script.phrase}</h3>
-        <p><strong>Mode:</strong> ${script.mode}</p>
-        <p><strong>Communication Intent:</strong> ${script.intent}</p>
-        <p><strong>Notes:</strong> ${script.notes}</p>`;
-   
-        try {
-            const response = await fetch(pdfServiceUrl, {
-                method: "POST",
-                headers: {"Content-Type": "text/html"},
-                body: htmlContent
-            })
-
-            if (!response.ok) throw new Error("Failed to generate PDF");
-            
-            const blob = await response.blob()  // Returns a newly created Blob object which contains a concatenation of all of the data in the array passed into the constructor. (https://developer.mozilla.org/en-US/docs/Web/API/Blob)
-            const link = document.createElement("a");
-            link.href = URL.createObjectURL(blob);
-            link.download = `${script.phrase.replace(/\s+/g, "_")}.pdf`;
-            document.body.appendChild(link);
-            link.click();
-            document.body.removeChild(link);
-
-        } catch(error) {
-            console.error("Error generating PDF:", error)
-            alert("Error generating PDF")
-        }
-    }
 
     return (
         <div className="card">
