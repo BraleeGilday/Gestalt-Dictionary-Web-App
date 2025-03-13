@@ -31,9 +31,9 @@ const RecordButton = () => {
     return (
         <div>
             {recording ? (
-                <button onClick={handleStop}>Stop Recording</button>
+                <button className="record-button" onClick={handleStop}>Stop Recording</button>
             ) : (
-                <button onClick={handleStart}>Start Recording</button>
+                <button className="record-button" onClick={handleStart}>Start Recording</button>
             )}
 
             {audioFile && (

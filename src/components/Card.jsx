@@ -23,7 +23,8 @@ function Card({script, onDelete, onEdit}) {
         `<h1>My Script</h1>
         <h3>Phrase: ${script.phrase}</h3>
         <p><strong>Mode:</strong> ${script.mode}</p>
-        <p><strong>Communication Intent:</strong> ${script.intent}</p>`;
+        <p><strong>Communication Intent:</strong> ${script.intent}</p>
+        <p><strong>Notes:</strong> ${script.notes}</p>`;
    
         try {
             const response = await fetch(pdfServiceUrl, {
@@ -90,6 +91,8 @@ function Card({script, onDelete, onEdit}) {
                     <h3>{script.phrase}</h3>
                     <p><strong>Mode:</strong> {script.mode}</p>
                     <p><strong>Intent:</strong> {script.intent}</p>
+
+                    {script.notes && <p><strong>Notes:</strong> {script.notes}</p>}
 
                     <div>
                         <img 

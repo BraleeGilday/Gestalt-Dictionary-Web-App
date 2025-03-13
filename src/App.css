@@ -247,17 +247,17 @@ audio {
   border-radius: 15px;
   max-width: 900px;
   margin: auto;
-  margin-top: 50px;
+  margin-top: 20px;
   min-height: 400px;
 }
 
 .add-container h1 {
   background-color: #d73cbe;
   color: black;
-  padding: 10px;
+  padding: 18px;
   border-radius: 10px 10px 0 0;
   font-family: 'OpenDyslexic';
-  padding: 20px;
+
   text-align: left;
   font-size: 1.5em;
   letter-spacing: -3px;
@@ -268,11 +268,12 @@ audio {
   text-align: left;
   font-size: .9em;
   margin-left: 20px;
+  margin-bottom: 0;
 }
 
 fieldset {
   border: none;
-  margin: 0;
+  margin: 2px;
   padding: 0;
 }
 
@@ -298,7 +299,7 @@ form {
 
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 5px;
 
 }
 

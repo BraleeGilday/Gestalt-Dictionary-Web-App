@@ -3,8 +3,6 @@ import { useNavigate } from 'react-router-dom';
 import { addScript } from '../../APIs/scripts';
 import { startRecording, stopRecording } from '../../APIs/audio';
 
-// import RecordButton from '../components/RecordButton';
-
 import PopupIcon from '../components/PopupIcon';
 import AreYouSure from '../components/AreYouSure';
 
@@ -12,6 +10,9 @@ function AddScript() {
     const [phrase, setPhrase] = useState('');
     const [mode, setMode] = useState('Verbal');
     const [intent, setIntent] = useState('Unknown');
+
+    const [notes, setNotes] = useState('') 
+
     const [showConfirmation, setShowConfirmation] = useState(false);
 
     const [audioFile, setAudioFile] = useState(null);
@@ -62,10 +63,10 @@ function AddScript() {
             return;
         }
 
-        console.log("Submitting Script with:", { phrase, mode, intent, audio_url: audioFile });
+        console.log("Submitting Script with:", { phrase, mode, intent, audio_url: audioFile, notes });
 
         try {
-            await addScript(phrase, mode, intent, audioFile)
+            await addScript(phrase, mode, intent, audioFile, notes)
             navigate("/dictionary")
 
         } catch(error) {
@@ -186,6 +187,17 @@ function AddScript() {
                             <option value="New Situation">New Situation</option>
                         </select>
                     </div>
+                </fieldset>
+
+                <fieldset>
+                    <legend>Notes</legend>
+                    <textarea 
+                        name="notes"
+                        value={notes} 
+                        onChange={e => setNotes(e.target.value)} 
+                        className='scriptTextInput'
+                        placeholder='Type the notes here'
+                    />
                 </fieldset>
 
                 <div className="addPageButtons">
