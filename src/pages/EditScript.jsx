@@ -53,6 +53,17 @@ function EditScript({scriptToEdit}) {
         }
     }
 
+    const handleEditScript = async () => {
+        const updatedScript = { phrase, mode, intent, audio_url: audioFile, notes };
+
+        const success = await editScript(scriptToEdit._id, updatedScript);
+        if (success) {
+            navigate("/dictionary");
+        } else {
+            alert("Failed to update script.");
+        }
+    };
+
     return (
         <div className="add-container">
             <h1>Edit Script</h1>
@@ -179,7 +190,7 @@ function EditScript({scriptToEdit}) {
                 </fieldset>
 
                 <div className="addPageButtons">
-                    <button className="addPageButton" onClick={editScript}>
+                    <button className="addPageButton" onClick={handleEditScript}>
                     SAVE
                     </button>
 

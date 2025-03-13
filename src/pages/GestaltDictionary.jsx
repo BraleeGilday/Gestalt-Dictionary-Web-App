@@ -14,13 +14,8 @@ function GestaltDictionary({setScriptToEdit}) {
     const [scripts, setScripts] = useState([]);
     const navigate = useNavigate();
 
-    useEffect(() => {
-        const fetchScripts = async () => {
-            const data = await loadScripts();
-            setScripts(data); 
-        };
-
-        fetchScripts();
+    useEffect(() => { 
+        loadScripts(); 
     }, []);
 
     const onDelete = async (_id) => {

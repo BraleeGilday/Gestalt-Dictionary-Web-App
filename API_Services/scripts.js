@@ -1,4 +1,4 @@
-const SCRIPT_URL = "http://127.0.0.1:3000/api"
+const SCRIPT_URL = "http://127.0.0.1:3000/api/scripts"
 
 export const addScript = async ( phrase, mode, intent, audio_url, notes ) => {
     const token = localStorage.getItem("token")
@@ -8,7 +8,7 @@ export const addScript = async ( phrase, mode, intent, audio_url, notes ) => {
         throw new Error("User not authentiated")
     }
 
-    const response = await fetch(`${SCRIPT_URL}/scripts`, {
+    const response = await fetch(SCRIPT_URL, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -27,16 +27,26 @@ export const addScript = async ( phrase, mode, intent, audio_url, notes ) => {
 }
 
 
-export const editScript = async (scriptId, updatedScript) => {
+export const editScript = async ( scriptId, updatedScript ) => {
+    const token = localStorage.getItem("token");
+    const user_id = localStorage.getItem("user_id");
+
+    if (!token || !user_id) {
+        throw new Error("User not authenticated");
+    }
+
     try {
         const response = await fetch(`${SCRIPT_URL}/${scriptId}`, {
             method: "PUT",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify(updatedScript),
+            headers: { 
+                "Content-Type": "application/json",
+                "Authorization": `Bearer ${token}`
+            },
+            body: JSON.stringify({ ...updatedScript, user_id }), // Ensure user_id is sent
         });
 
         if (!response.ok) {
-            throw new Error("Failed to edit script");
+            throw new Error(`Failed to edit script: ${response.status}`);
         }
 
         console.log("Your script was successfully updated!");
@@ -57,7 +67,7 @@ export const loadScripts = async () => {
     }
 
     try {
-        const response = await fetch(`${SCRIPT_URL}/scripts`, {
+        const response = await fetch(SCRIPT_URL, {
             method: "GET",
             headers: {
                 "Content-Type": "application/json",
