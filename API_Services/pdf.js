@@ -1,6 +1,7 @@
 const PDF_URL = "http://127.0.0.1:5005/generate-pdf-from-html";
 
 export const downloadScriptPDF = async (script) => {
+    console.log("Talking to PDF microservice: Requesting PDF generation for a single script.");
     const htmlContent = `
         <h1>My Script</h1>
         <h3>Phrase: ${script.phrase}</h3>
@@ -36,6 +37,8 @@ export const downloadScriptPDF = async (script) => {
 
 
 export const downloadAllScriptsPDF = async (scripts) => {
+    console.log("Talking to PDF microservice: Requesting PDF generation for multiple scripts.");
+
     const htmlContent = scripts.map(script =>
         `<br>
         <h3>Phrase: ${script.phrase}</h3>

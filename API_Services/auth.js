@@ -1,6 +1,7 @@
 const AUTH_URL = "http://127.0.0.1:5000/api"; // Flask backend URL
 
 export const loginUser = async (username, password) => {
+    console.log("Talking to authentication microservice: Sending login request.");
     try {
         const response = await fetch(`${AUTH_URL}/login`, {
             method: 'POST',
@@ -20,6 +21,7 @@ export const loginUser = async (username, password) => {
             return { error: data?.error || "Login failed" };
         }
 
+        console.log("Login successful! Storing token and user ID.");
         localStorage.setItem("token", data.access_token);
         localStorage.setItem("user_id", data.user_id);
 
@@ -30,6 +32,7 @@ export const loginUser = async (username, password) => {
 };
 
 export const registerUser = async (username, password) => {
+    console.log("Talking to authentication microservice: Sending registration request.");
     try {
         const response = await fetch(`${AUTH_URL}/register`, {
             method: 'POST',
@@ -49,6 +52,7 @@ export const registerUser = async (username, password) => {
             return { error: data?.error || "Registration failed" };
         }
 
+        console.log("Registration successful!", data);
         return data;
     } catch (error) {
         return { error: "Network error" };
@@ -56,6 +60,7 @@ export const registerUser = async (username, password) => {
 };
 
 export const logoutUser = async () => {
+    console.log("Talking to authentication microservice: Sending logout request.");
     const token = localStorage.getItem("token");
 
     if (!token) {
@@ -94,6 +99,7 @@ export const logoutUser = async () => {
 };
 
 export const verifyUser = async () => {
+    console.log("Talking to authentication microservice: Verifying user session.");
     const token = localStorage.getItem("token");
 
     if (!token) {

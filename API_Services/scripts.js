@@ -1,6 +1,7 @@
 const SCRIPT_URL = "http://127.0.0.1:3000/api/scripts"
 
 export const addScript = async ( phrase, mode, intent, audio_url, notes ) => {
+    console.log("Talking to Scripts Management microservice: Adding a new script.");
     const token = localStorage.getItem("token")
     const user_id = localStorage.getItem("user_id")
 
@@ -28,6 +29,7 @@ export const addScript = async ( phrase, mode, intent, audio_url, notes ) => {
 
 
 export const editScript = async ( scriptId, updatedScript ) => {
+    console.log(`Talking to Scripts Management microservice: Editing script with ID ${scriptId}.`);
     const token = localStorage.getItem("token");
     const user_id = localStorage.getItem("user_id");
 
@@ -57,7 +59,9 @@ export const editScript = async ( scriptId, updatedScript ) => {
     }
 };
 
+
 export const loadScripts = async () => {
+    console.log("Talking to Scripts Management microservice: Loading scripts.");
     const token = localStorage.getItem("token");
     const user_id = localStorage.getItem("user_id");
 
@@ -86,6 +90,7 @@ export const loadScripts = async () => {
 };
 
 export const deleteScript = async (_id) => {
+    console.log(`Talking to Scripts Management microservice: Deleting script with ID ${_id}.`);
     try {
         const response = await fetch(`${SCRIPT_URL}/${_id}`, {
             method: "DELETE",

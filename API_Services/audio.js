@@ -1,6 +1,7 @@
 const AUDIO_URL = "http://127.0.0.1:5002/api"; // Flask backend URL
 
 export const startRecording = async () => {
+    console.log("Talking to audio microservice: Sending request to start recording.");
     const response = await fetch(
         `${AUDIO_URL}/start-recording`,
         {method: 'POST'}
@@ -11,6 +12,7 @@ export const startRecording = async () => {
 }
 
 export const stopRecording = async() => {
+    console.log("Talking to audio microservice: Sending request to stop recording.");
     const response = await fetch(
         `${AUDIO_URL}/stop-recording`,
         {method: 'POST'}
@@ -21,5 +23,7 @@ export const stopRecording = async() => {
 }
 
 export const getAudioFile = (fileName) => { 
-    return `${AUDIO_URL}/get-audio/${fileName}`
+    const fileUrl = `${AUDIO_URL}/get-audio/${fileName}`;
+    console.log(`Talking to audio microservice: Fetching audio file at ${fileUrl}`);
+    return fileUrl
 }
